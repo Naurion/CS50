@@ -18,12 +18,4 @@ public class CheckAlpha {
         }
         return bul;
     }
-
-    /*public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String s= reader.readLine();
-        char c = s.charAt(0);
-        System.out.println(Check(c));
-    }*/
-
 }

@@ -1,5 +1,9 @@
 package Naurion;
 
+import com.sun.xml.internal.org.jvnet.mimepull.MIMEMessage;
+import sun.plugin2.message.Message;
+import sun.plugin2.message.SetJVMIDMessage;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
