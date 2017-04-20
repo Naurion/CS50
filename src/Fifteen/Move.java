@@ -7,7 +7,14 @@ import java.io.InputStreamReader;
 public class Move {
     public static int[][] mMove(int[][] array) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int mValue = Integer.parseInt(reader.readLine());
+        int mValue = 0;
+        try {
+            mValue = Integer.parseInt(reader.readLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Integer need");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         int mIVal = 0, mJVal = 0;
         for (int i = 0; i < array.length;i++) {
             for (int j = 0; j < array.length; j++) {
