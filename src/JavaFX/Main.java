@@ -7,9 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 
-/**
- * Created by makarov.s on 22.03.2017.
- */
+
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
