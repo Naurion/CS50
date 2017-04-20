@@ -12,17 +12,16 @@ public class Draw {
         int[][] mArray = new int[mMax][mMax];
         Move move = new Move();
         for (int i = 0; i < mMax; i++) {
-            System.out.println();
             for (int j = 0; j < mMax; j++) {
                 mArray[i][j] = mCount;
-                if (mArray[i][j] != 0) {
-                    if (mArray[i][j] < 10) {
-                        System.out.print(" " + mArray[i][j] + " ");
-                    }else System.out.print(mArray[i][j] + " ");
-                    mCount--;
-                } else System.out.print(" _");
+                mCount--;
             }
         }
+        if (mMax % 2 == 0) {
+            mArray[mArray.length-1][mArray.length - 2] = 2;
+            mArray[mArray.length-1][mArray.length - 3] = 1;
+        }
+        mPrint(mArray);
         while(!Won.mWon(mArray)){
             System.out.println();
             mArray = Move.mMove(mArray);
