@@ -43,29 +43,34 @@ public class Visual extends Application {
 
                 @Override
                 public void handle(ActionEvent event) {
-//                    VisualMove.mVisualMove(root);
                     int mRow0 = GridPane.getRowIndex(buttons.get(0));
                     int mColumn0 = GridPane.getColumnIndex(buttons.get(0));
                     int mRow = GridPane.getRowIndex(buttons.get(Integer.parseInt(mButtonId)));
                     int mColumn = GridPane.getColumnIndex(buttons.get(Integer.parseInt(mButtonId)));
-                    if(mRow == mRow0++ || mRow == mRow0-- || mColumn == mColumn0++ || mColumn == mColumn0--)
-                    {
-                        System.out.println(mRow0+" "+mColumn0);
-                        System.out.println(root.getChildren());
-//                        GridPane.setConstraints(buttons.get(0), mColumn, mRow);
-//                        GridPane.setConstraints(buttons.get(Integer.parseInt(mButtonId)),mColumn0, mRow0);
+                    if(mRow == mRow0 && (mColumn == mColumn0+1 || mColumn == mColumn0-1) || mColumn == mColumn0 && (mRow == mRow0+1 || mRow == mRow0-1)){
+                        GridPane.setConstraints(buttons.get(0), mColumn, mRow);
+                        GridPane.setConstraints(buttons.get(Integer.parseInt(mButtonId)),mColumn0, mRow0);
                     }
                  }
             });
         }
 
-        buttons.get(0).setVisible(true);
+        buttons.get(0).setVisible(false);
 
         counter = mMax*mMax-1;
         for (int i = 0; i < mMax; i++) {
             for (int j = 0; j < mMax; j++) {
                 root.add(buttons.get(counter--), j, i);
             }
+        }
+        if (mMax % 2 == 0) {
+            int mRow1 = GridPane.getRowIndex(buttons.get(1));
+            int mColumn1 = GridPane.getColumnIndex(buttons.get(1));
+            int mRow2 = GridPane.getRowIndex(buttons.get(2));
+            int mColumn2 = GridPane.getColumnIndex(buttons.get(2));
+            GridPane.setConstraints(buttons.get(1), mColumn2, mRow2);
+            GridPane.setConstraints(buttons.get(2),mColumn1, mRow1);
+
         }
         primaryStage.show();
     }
