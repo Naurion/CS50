@@ -5,13 +5,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.management.MemoryManagerMXBean;
 import java.util.HashMap;
 
 public class Visual extends Application {
@@ -51,9 +53,13 @@ public class Visual extends Application {
                         GridPane.setConstraints(buttons.get(0), mColumn, mRow);
                         GridPane.setConstraints(buttons.get(Integer.parseInt(mButtonId)),mColumn0, mRow0);
                     }
-                 }
+                    if (Won()) {
+                        VisualWon(primaryStage);
+                    }
+                }
             });
         }
+
 
         buttons.get(0).setVisible(false);
 
@@ -70,10 +76,48 @@ public class Visual extends Application {
             int mColumn2 = GridPane.getColumnIndex(buttons.get(2));
             GridPane.setConstraints(buttons.get(1), mColumn2, mRow2);
             GridPane.setConstraints(buttons.get(2),mColumn1, mRow1);
-
         }
         primaryStage.show();
     }
+
+    public boolean Won() {
+        int counter = 0;
+        boolean bln = true;
+        for (int i = 0; i < mMax; i++) {
+            for (int j = 0; j < mMax; j++) {
+                counter++;
+                if (counter < mMax*mMax){
+                    if (GridPane.getRowIndex(buttons.get(counter)) == i && GridPane.getColumnIndex(buttons.get(counter)) == j) {
+
+                    }else bln=false;
+                }
+            }
+        }
+        if (bln && GridPane.getRowIndex(buttons.get(0)) == mMax-1 && GridPane.getColumnIndex(buttons.get(0)) == mMax-1){
+            return true;
+        }
+        return false;
+    }
+
+    public void VisualWon(Stage primaryStage) {
+        Stage winStage = new Stage();
+        GridPane mWonPane = new GridPane();
+        mWonPane.setAlignment(Pos.CENTER);
+        Button wonBtn = new Button();
+        winStage.setTitle("You WIN!!!");
+        wonBtn.setText("Click!");
+        wonBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                primaryStage.close();
+                winStage.close();
+            }
+        });
+        mWonPane.add(wonBtn, 1, 1);
+        winStage.setScene(new Scene(mWonPane));
+        winStage.show();
+    }
+
 
 
     public static void main(String[] args) throws IOException {
